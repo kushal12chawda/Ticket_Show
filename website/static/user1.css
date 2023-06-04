@@ -1,0 +1,32 @@
+/* hover */
+.p0 {
+    transform:
+      perspective(800px)
+      rotateY(25deg) scale(0.9)
+      rotateX(10deg);
+    opacity: 1;
+    transition: 0.6s ease all;
+}  
+
+.p0:hover {
+      transform:
+        perspective(800px)
+        rotateY(-15deg)
+        translateY(-50px)
+        rotateX(10deg)
+        scale(1);
+      filter: blur(0);
+      opacity: 1;
+}
+
+body {
+    background: url("https://www.rocking-mama.com/wp-content/uploads/2017/08/movieee.jpg"); 
+  
+    /* Center and scale the image nicely */
+    background-position: left 0px top 0px; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%; 
+    background-attachment: fixed; 
+} 
+

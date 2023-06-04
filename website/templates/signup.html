@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert" style="position: relative;">      
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" align="center" style="color: white;background-image: linear-gradient(50deg,#C33764,#1D2671); width: 1400px; margin-left: 60px; top: 20px; position: absolute;">
+                <div style="font-size: medium; font-family: Rockwell;"><b>{{message}}</b></div>
+                <button type="button" style="background-color: aliceblue;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> 
+        </div>       
+    {% endfor %}    
+
+    <div class="container">
+        <div class="login-center" style="font-family: sans-serif; height: 600px; width: 500px; background-color: rgba(240,248,255,.75); border-radius: 50px; margin-left: 387px; margin-top: 50px; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" align="center">
+            <br>
+            <div class="login-header">
+                <p style="font-size: 200%; padding-top: 10px;"><b>Book My Show</b></p>
+            </div>
+            <br>
+            <form class="login-form" action="" method="POST">
+            <div class="login-form-mid">
+                <div class="login-form-item" align="left" style="margin-left: 25px; margin-top: -10px;">
+                    <label for="username" style="font-size: 20px; font-weight: bold; margin-left: 45px;">Enter Username</label>
+                    <input required type="text" id="username"  name="username"  placeholder="Enter Username" style="border: 1px soild black; border-radius: 20px; width: 360px; height: 45px; margin-left:40px;font-size: 125%; padding-left: 20px; margin-top: 5px;">
+                </div>
+                <br>
+                <div class="login-form-item" align="left" style="margin-left: 25px; margin-top: 10px;">
+                    <label for="password" style="font-size: 20px; font-weight: bold; margin-left: 45px;">Enter Password</label>
+                    <input required type="password" id="password" name="password" placeholder="Enter Password" style="border: 1px soild black; border-radius: 20px; width: 360px; height: 45px; margin-left:40px;font-size: 125%; padding-left: 20px; margin-top: 5px;">
+                </div>
+                <br>
+                <div class="login-form-item" align="left" style="margin-left: 25px;margin-top: 10px;">
+                    <label for="email" style="font-size: 20px; font-weight: bold; margin-left: 45px;">Enter Email</label>
+                    <input required type="email" id="email" name="email" placeholder="Enter Email" style="border: 1px soild black; border-radius: 20px; width: 360px; height: 42px; margin-left:45px;font-size: 125%; padding-left: 20px; margin-top: 5px;">
+                </div>        
+                <br>
+                <br>
+                <div class="login-form-item" >
+                   <button type="submit"  formaction="/user/signup" formmethod="post"    align='left' style="margin-right:18px; border-radius: 100px; width: 140px; height: 60px; font-size: 15px; color: rgb(245, 247, 250); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; "><b>Sign In As User</b></button>
+                   <button type="submit"  formaction="/admin/signup" formmethod="post"   align='right' style="margin-right:5px; border-radius: 100px; width: 140px; height: 60px; font-size: 15px; color: rgb(245, 247, 250); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;"><b>Sign In As Admin</b></button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add movie</title>
+    <link rel="stylesheet" type="text/css" href="../static/Addmovie.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alret" style="position: relative;">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" align="center" style=" margin-top: -35px; color: white;background-image: linear-gradient(50deg,#cc2b5e,#753a88); width: 1400px; margin-left: 60px; top: 20px; height: 40px; padding-top: -5px; position: absolute;">
+          <div style="font-size: medium; margin-top: -8px; font-family: Rockwell;"><b>{{message}}</b></div> 
+          <button type="button" style="background-color: aliceblue; height: 0px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>  
+    </div>        
+    {% endfor %}
+
+    <nav class="navbar navbar-dark fixed-top" style="opacity: .985; background-color: black;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+      <div class="container-fluid">  
+        <a class="navbar-brand" href="#" style="margin-left: 30px; font-family:Copperplate Gothic Light ; font-size: 120%;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b><span style="margin-left: 780px;"><b>Welcome &nbsp&nbsp{{admin.admin_name}}</b></span><span style="margin-left: 70px;"><b>{{admin.admin_city}}</b></span><span><a href="/logout" style="color: aliceblue; text-decoration: none; cursor: pointer; margin-left: 30px;"><b>Logout</b></a></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: black;">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color: white; font-family: Copperplate Gothic Light ;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-family: Goudy Old Style; font-size: 135%; color: black">
+              <li class="nav-item">
+                <a class="nav-link" href="/add_movies"><b>🍿&nbsp&nbsp&nbsp&nbspAdd Movie</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/add_venue"><b>🍿&nbsp&nbsp&nbsp&nbspAdd Theater/Venue</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/view_movies"><b>🍿&nbsp&nbsp&nbsp&nbspView Movie</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/view_venue"><b>🍿&nbsp&nbsp&nbsp&nbspView Theater/Venue</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/city_admin"><b>🍿&nbsp&nbsp&nbsp&nbsp Change City</b></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav> 
+    
+    <div class="container">
+        <div class="login-center" style="font-family: sans-serif; height: 600px; width: 500px; background-color: rgba(240,248,255,.75); border-radius: 50px; margin-left: 730px; margin-top: 80px; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" align="center">
+            <form class="login-form" action="" method="POST">   
+                <div class="login-mid">
+                    <br>
+                    <br>
+                    <div class="login-form-item" style="margin-left:60px; font-size: 17px; display: flex; flex: 6; gap:20px; font-family: cursive;">
+                        <label for="moviename">Movie Name</label>
+                        <input required type="text" name="moviename"  id="moviename">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left: 52px; font-size: 17px;display: flex; flex: 6; gap:20px; font-family: cursive; margin-top: 15px;">
+                        <label for="releasedate">Release Date</label>
+                        <input type="date" name="releasedate"  id="releasedate" style="height: 35px; width: 260px;">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left:54px; display: flex; flex: 6; gap:30px;font-size: 17px; font-family: cursive; margin-top: 15px;">
+                        <label for="ticketcost">Ticket Cost</label>
+                        <input required type="number" name="ticketcost" id="ticketcost">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left:54px; display: flex; flex: 6; gap:32px;font-size: 17px; font-family: cursive;margin-top: 15px;">
+                        <label for="showtime">Movie Time</label>
+                        <input type="text" id="showtime" name="showtime">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left: 38px; font-size: 17px;display: flex; flex: 6; gap:20px; font-family: cursive; margin-top: 15px;">
+                      <label for="moviecapacity">Movie Capacity</label>
+                      <input required type="number" name="moviecapacity"  id="moviecapacity" style="height: 32px; width: 260px;">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left:41px; display: flex; flex: 6; gap:30px;font-size: 17px; font-family: cursive; margin-top: 15px;">
+                        <label for="length">Movie Length</label>
+                        <input type="text" name="length" id="length" style="height: 32px; width: 260px;">
+                    </div>
+                    <br>
+                    <div class="login-form-item" style="margin-left:90px; display: flex; flex: 6; gap:40px;font-size: 17px; font-family: cursive; margin-top: 15px;">
+                        <label for="venue">Venue</label>
+                        <input required type="text" name="venue" id="venue">
+                    </div>
+                    <br>
+                </div> 
+                <div class="login-footer" style="margin-left: 40px;">
+                    <button type="submit"  style="height: 40px; width: 100px; font-family: cursive; border-radius: 5px;">Submit</button>
+                </div>   
+            </form>
+        </div>
+    </div>  
+</body>
+</html>

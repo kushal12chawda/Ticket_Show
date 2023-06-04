@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user6</title>
+    <link rel="stylesheet" type="text/css" href="../static/user6.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- Modal 0 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Heyaa {{user.user_name}} 👋</h1>
+            </div>
+            <div class="modal-body">
+            Your Rating Successfully Submitted ✅
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Modal delete-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Heyaa {{user.user_name}} 👋</h1>
+            </div>
+            <div class="modal-body">
+            Your Booking has been deleted ❌
+            </div>
+            <div class="modal-footer">
+           <form><button type="submit" formaction="/view_booking" formmethod="POST" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--NAV BAR-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-dark fixed-top"  style="height: 60px; margin-top: 13px; margin-left: 50px; margin-right: 50px; opacity: .985; background-color: black;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+        <div class="container-fluid">  
+          <a class="navbar-brand" href="#" style="margin-left: 30px; font-family:Copperplate Gothic Light ; font-size: 120%;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b><span style="margin-left: 695px;"><b>Welcome &nbsp&nbsp{{user.user_name}}</b></span><span style="margin-left: 70px;"><b>{{user.user_city}}</b></span><span><a href="/logout" style="color: aliceblue; text-decoration: none; cursor: pointer; margin-left: 30px;"><b>Logout</a></b></span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: black;">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color: white; font-family: Copperplate Gothic Light ;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b></h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <br>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-family: Goudy Old Style; font-size: 135%; color: black;">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="/user11"><b>🍿&nbsp&nbsp&nbsp&nbsp Home</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="/all_movies"><b>🍿&nbsp&nbsp&nbsp&nbsp All Movies</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view_booking"><b>🍿&nbsp&nbsp&nbsp&nbsp View Booking</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <a class="nav-link" href="/city_user"><b>🍿&nbsp&nbsp&nbsp&nbsp Change City</b></a>
+                </li>
+                <br>
+                <li class="nav-item">
+                  <a class="nav-link" href="/trends"><b>🍿&nbsp&nbsp&nbsp&nbsp Trends</b></a>
+                </li>
+                <br>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" id="searchmovie" name="searchmovie" type="search" placeholder="Search for Movies , Tags and city" aria-label="Search">
+                <button class="btn btn-outline-info" type="submit" formaction="/search_movie" formmethod="POST">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <div class="heading top"  style=" margin-top: 119px; padding-right: 0px; font-family: papyrus; margin-left: 540px; height: 50px; width: 430px; background-color: rgba(245, 245, 245, 0.7); border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+        <h3 style="padding-left: 30px; padding-top: 10px;" ><b style="color: black;">BOOKING &nbsp&nbsp HISTORY</b></h3>
+    </div>
+    <div class="c1" style="margin-top: 70px; margin-left: 50px">
+        {% if m5 %}
+        <table>
+        {% for i in m5 %} 
+        <tr>
+        <td style="padding: 10px">
+            <div class="hover6" style="margin-left: 290px; height: 210px; width: 820px; background-image: linear-gradient(55deg,#00416A 50%,#E4E5E6); color:white; opacity: 0.85; border-radius: 40px; border-color: black;">
+                <div class="h1" style="height: 150px;">
+                    <div class="left" style="float:left;  width: 700px;">
+                        <div class="hleft1" style="padding-top: 50px; padding-left: 50px; font-family: century gothic;">
+                            {{i.booking_movie_name}}
+                        </div>
+                        <div class="hleft2" style="margin-top: -70px; padding-left: 280px; font-size: large; font-family: Rockwell;">
+                            {{i.booking_venue}}
+                            <br>
+                            <br>
+                            <br>
+                            {{i.booking_time}}
+                        </div>
+                        <div class="hleft3" style="margin-top: -88px; padding-left: 420px; font-size: large;font-family: Rockwell; ">
+                            {{i.booking_seats}} Seats
+                            <br>
+                            <br>
+                            <br>
+                            {{i.booking_cost}} Rs
+                        </div>
+                    </div>
+                    <div class="right" style="float: right; width: 230px; margin-top: -125px;">
+                        <form>
+                            <br>
+                            <button type="button" onclick="dodelete('{{i.booking_id}}')"   data-bs-toggle="modal" data-bs-target="#exampleModal1"  class="btn btn-outline-light my-2 my-sm-0 " style=" border-radius: 5px; width: 150px; height: 45px; font-size: 15px; font-weight: bold; cursor: pointer; font-family: Bahnschrift SemiBold;">Cancel Booking</button>
+                            <script>
+                                function dodelete(val) {
+                                    fetch("/delete_booking/" + val, { method: 'POST' })
+                                        }
+                            </script>
+                        </form>
+                    </div>
+                </div>
+                <div class="hr" style="margin-top: -30px; margin-left: 30px; background-color: white; width: 92%; size: 2px;">
+                    <hr > 
+                </div>
+                <div class="h2" style="margin-top: -45px; height: 95px;">
+                    <div style="float: left; margin-top: 8px; margin-left: 55px; font-size: large;">RATE</div>
+                    <form style="display: flex; flex: 6; gap: 20px; margin-top: 60px; margin-left: 120px; font-size: large;">
+                        <button type="button" onclick="doSomething('/1/{{i.booking_id}}')"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; height: 38px; font-weight:bold; border-radius: 10px; border: none; font-size: medium;">1⭐</button>
+                        <button type="button" onclick="doSomething('/2/{{i.booking_id}}')"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; height: 38px; font-weight:bold; border-radius: 10px; border: none; font-size: medium;">2⭐</button>
+                        <button type="button" onclick="doSomething('/3/{{i.booking_id}}')"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; height: 38px; font-weight:bold; border-radius: 10px; border: none; font-size: medium;">3⭐</button>
+                        <button type="button" onclick="doSomething('/4/{{i.booking_id}}')"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; height: 38px; font-weight:bold; border-radius: 10px; border: none; font-size: medium;">4⭐</button>
+                        <button type="button" onclick="doSomething('/5/{{i.booking_id}}')"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; height: 38px; font-weight:bold; border-radius: 10px; border: none; font-size: medium;">5⭐</button>
+                        <script>
+                            function doSomething(val) {
+                                fetch("/button_rating" + val, { method: 'POST' })
+                                    }
+                        </script>
+                    </form>
+                </div>
+            </div> 
+            <br>
+            <br> 
+        </tr>
+        {% endfor %}  
+        </table>
+        {% else %}
+        <div class="no movies" align="center" style="padding-top: 60px;" >
+            <p style="padding-top: 30px; font-size: 30px; font-family: Copperplate Gothic Light ; word-spacing: 7px; color: black;height: 115px; width: 980px; background-color: rgba(245, 245, 245, 0.9); border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">No Bookings available  at this time :(</p>
+          </div>
+        {% endif %}
+    </div>
+</body>
+</html>    

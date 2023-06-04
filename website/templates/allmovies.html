@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all movies</title>
+    <link rel="stylesheet" type="text/css" href="../static/user1.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-dark fixed-top"  style="height: 60px; margin-top: 13px; margin-left: 50px; margin-right: 50px; opacity: .985; background-color: black;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+      <div class="container-fluid">  
+        <a class="navbar-brand" href="#" style="margin-left: 30px; font-family:Copperplate Gothic Light ; font-size: 120%;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b><span style="margin-left: 680px;"><b>Welcome &nbsp&nbsp{{user.user_name}}</b></span><span style="margin-left: 70px;"><b>{{user.user_city}}</b></span><span><a href="/logout" style="color: aliceblue; text-decoration: none; cursor: pointer; margin-left: 30px;"><b>Logout</a></b></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: black;">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color: white; font-family: Copperplate Gothic Light ;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <br>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-family: Goudy Old Style; font-size: 135%; color: black;">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/user11"><b>🍿&nbsp&nbsp&nbsp&nbsp Home</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/all_movies"><b>🍿&nbsp&nbsp&nbsp&nbsp All Movies</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/view_booking"><b>🍿&nbsp&nbsp&nbsp&nbsp View Booking</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/city_user"><b>🍿&nbsp&nbsp&nbsp&nbsp Change City</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                <a class="nav-link" href="/trends"><b>🍿&nbsp&nbsp&nbsp&nbsp Trends</b></a>
+              </li>
+              <br>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" id="searchmovie" name="searchmovie" type="search" placeholder="Search for Movies , Tags and city" aria-label="Search">
+              <button class="btn btn-outline-info" type="submit" formaction="/search_movie" formmethod="POST">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="c1" style="margin-top:100px; position: fixed; top: 10px; right: 580px;">
+        <div  class="h1" align="center"  style="padding-top: 10px; font-size: xx-large; font-family: Tahoma;height: 65px; width: 390px; background-color: rgba(245, 245, 245, 0.5); border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+            Movies in <span style="font-family: Helvetica;"><b>Ticket Show</b></span>
+        </div>
+    </div> 
+    <br>   
+    <div class="c2" style="margin-top:200px;"> 
+        {% if m1 %}   
+        <div class="h2">
+          <table>
+            <tr>
+            {% for rows in m1 %}
+            <td  style="padding: 10px;">
+            <form>
+            <div class="p0">  
+            <button formaction="/user22/{{rows.movie_name}}"  formmethod='POST' type="submit"  style="border-top-left-radius: 5px; border-bottom-left-radius: 5px; float:left; height: 350px; width: 300px; background-image: linear-gradient(315deg, #000000 40%, #434343 74%); color:aliceblue; opacity: 0.85; border-radius: 10px; border-color: aliceblue;">
+              <div class="p1">
+                <p style="font-family: Copperplate Gothic Light; font-size: xx-large; margin-top: 10px; margin-left: -20px; font-weight: bolder;">{{rows.movie_name}}</p> 
+              </div>
+              <div class="p2" style="margin-top: 110px;"> 
+                <p align="left" style="font-size: small; margin-left: 20px; font-family: Lucida Console;">🎬 Release Date➜ {{rows.movie_release_date}}</p>
+                <p align="left" style="font-size: small; margin-left: 20px; font-family: Lucida Console;">🎬 Rating➜ {{rows.movie_rating}}🌟</p>
+                <p align="left" style="font-size: small; margin-left: 20px; font-family: Lucida Console;">🎬 Duration➜ {{rows.movie_length}}</p>
+                <p align="left" style="font-size: small; margin-left: 20px; font-family: Lucida Console;">🎬 Tag➜ {{rows.movie_tag}} </p>
+              </div>
+            </button> 
+            </div>
+            </form>
+            </td>   
+            {% endfor %}
+            </tr>
+            </table>
+        </div>
+        {% else %}
+        <div class="no movies" align="center" style="padding-top: 60px;" >
+          <p style="padding-top: 30px; font-size: 30px; font-family: Copperplate Gothic Light ; word-spacing: 7px; color: black;height: 115px; width: 980px; background-color: rgba(245, 245, 245, 0.9); border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">No Movies Available in {{user.user_city}} right now, at this time :(</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

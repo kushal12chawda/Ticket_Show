@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view movies</title>
+    <link rel="stylesheet" type="text/css" href="../static/viewmovies.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alret" style="position: relative;">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" align="center" style=" margin-top: -55px; color: white;background-image: linear-gradient(50deg,#cc2b5e,#753a88); width: 1400px; margin-left: 60px; top: 20px; height: 40px; padding-top: -5px; position: absolute;">
+          <div style="font-size: medium; margin-top: -8px; font-family: Rockwell;"><b>{{message}}</b></div> 
+          <button type="button" style="background-color: aliceblue; height: 0px;" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>  
+    </div>        
+    {% endfor %}
+
+    <nav class="navbar navbar-dark  fixed-top" style="opacity: .985; background-color: black;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+      <div class="container-fluid">  
+        <a class="navbar-brand" href="#" style="margin-left: 30px; font-family:Copperplate Gothic Light ; font-size: 120%;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b><span style="margin-left: 780px;"><b>Welcome &nbsp&nbsp{{admin.admin_name}}</b></span><span style="margin-left: 50px;"><b>{{admin.admin_city}}</b></span><span><a href="/logout" style="color: aliceblue; text-decoration: none; cursor: pointer; margin-left: 30px;"><b>Logout</b></a></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: black;">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color: white; font-family: Copperplate Gothic Light ;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-family: MS PMincho; font-size: 120%;">
+              <li class="nav-item">
+                <a class="nav-link" href="/add_movies"><b>🍿&nbsp&nbsp&nbsp&nbspAdd Movie</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/add_venue"><b>🍿&nbsp&nbsp&nbsp&nbspAdd Theater/Venue</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/view_movies"><b>🍿&nbsp&nbsp&nbsp&nbspView Movie</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                  <a class="nav-link" href="/view_venue"><b>🍿&nbsp&nbsp&nbsp&nbspView Theater/Venue</b></a>
+              </li>
+              <br>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/city_admin"><b>🍿&nbsp&nbsp&nbsp&nbsp Change City</b></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav> 
+    <div class="container">
+        <div class="login-center" style="font-family: sans-serif; height: 570px; width: 720px; overflow-y: scroll; overflow-x: hidden; background-color: rgba(240,248,255,.75); border-radius: 50px; margin-left: 650px; margin-top: 100px; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" align="center">
+            <br>
+            <div class="header" style="font-family: rockwell;">
+                <h2> IN THEATER NOW 🎬...</h2>
+            </div>
+            <br>
+            <div class="table" style="margin-left: 5px; padding-right: 30px;">
+              <table>
+                <tr style="font-family: Copperplate Gothic Light;">
+                  <th>Name</th>
+                  <th>&nbsp&nbspTicket<br>&nbsp&nbspcost</th>
+                  <th>  &nbsp&nbspMovie<br>  &nbsp&nbsplength</th>
+                  <th>Show<br>time</th>
+                  <th>Venue</th>
+                  <th>&nbsp&nbspMovie<br>&nbsp&nbsp&nbspCapacity</th>
+                </tr>
+                {% for i in movie %}
+                <tr>
+                  <td>
+                    {{i.movie_name}}
+                  </td>
+                  <td>
+                    {{i.movie_ticket_cost}}
+                  </td>
+                  <td>
+                    {{i.movie_length}}
+                  </td>
+                  <td>
+                    {{i.movie_show_time}}
+                  </td>
+                  <td>
+                    {{i.movie_venue}}
+                  </td>
+                  <td>
+                    {{i.movie_capacity}}
+                  </td>
+                  <td>
+                    <button  formaction="/update_movie/{{i.movie_id}}"  formmethod='POST' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.movie_id}}" style=" height: 40px; width: 100px; font-family: cursive; background-color: #cb22d7; color: white; border-color: #cb22d7;">Update</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{i.movie_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header" style="font-family: Bodoni MT; font-size: 18px;">
+                            <p class="modal-title fs-5" id="exampleModalLabel ">UPDATE FORM</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form class="login-form" action="" method= 'POST'>   
+                              <div class="login-mid">
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:50px; font-size: 18px; display: flex; flex: 6; gap:20px; font-family: cursive; margin-top: 15px;">
+                                      <label for="moviename">Movie Name</label>
+                                      <input type="text" name="moviename"  id="moviename" value="{{i.movie_name}}">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left: 42px; font-size: 18px;display: flex; flex: 6; gap:20px; font-family: cursive; margin-top: 15px">
+                                      <label for="releasedate">Release Date</label>
+                                      <input type="date" name="releasedate"  id="releasedate" value="{{i.movie_release_date}}" style="height: 35px; width: 270px;">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:48px; display: flex; flex: 6; gap:30px;font-size: 18px; font-family: cursive;margin-top: 15px">
+                                      <label for="ticketcost">Ticket Cost</label>
+                                      <input type="number" name="ticketcost" id="ticketcost" value="{{i.movie_ticket_cost}}">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:45px; display: flex; flex: 6; gap:34px;font-size: 18px; font-family: cursive;margin-top: 15px">
+                                      <label for="showtime">Show Time</label>
+                                      <input type="text" id="showtime" name="showtime" value="{{i.movie_show_time}}">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:35px; display: flex; flex: 6; gap:20px;font-size: 18px; font-family: cursive;margin-top: 15px">
+                                      <label for="length">Movie Length</label>
+                                      <input type="text" name="length" id="length" value="{{i.movie_length}}" style="height: 32px; width: 260px;">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:80px; display: flex; flex: 6; gap:40px;font-size: 18px; font-family: cursive;margin-top: 15px">
+                                      <label for="venue">Venue</label>
+                                      <input type="text" name="venue" id="venue" value="{{i.movie_venue}}">
+                                  </div>
+                                  <br>
+                                  <div class="login-form-item" style="margin-left:30px; display: flex; flex: 6; gap:20px;font-size: 18px; font-family: cursive;margin-top: 15px">
+                                    <label for="moviecapacity">Movie Capacity</label>
+                                    <input type="number" name="moviecapacity" id="moviecapacity" value="{{i.movie_capacity}}" style="height: 32px; width: 260px;">
+                                  </div>
+                                  <br>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: black ; color: white;">Close</button>
+                                <button type="submit" formaction="/update_movie/{{i.movie_id}}"  formmethod='POST'  class="btn btn-primary" style="font-family: cursive; background-color: #cb22d7; color: white; border-color: #cb22d7;">Save changes</button>
+                              </div>
+                            </form>                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="{{url_for('views.remove_movie', id = i.movie_id)}}">
+                    <button type="submit" style="height: 40px; width: 100px; font-family: cursive; border-radius: 5px;">Remove</button>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>

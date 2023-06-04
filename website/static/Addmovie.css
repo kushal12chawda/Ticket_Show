@@ -1,0 +1,18 @@
+body {
+    background: url("purplek.jpg");
+  
+    /* Center and scale the image nicely */
+    background-position: left 0px top 48px;
+    background-repeat: no-repeat;
+    background-size: 90% 100%;
+}
+
+button {
+    border: none;
+    background-color: #202020;
+    color: aliceblue;
+    cursor: pointer;
+}
+::placeholder {
+    padding-left: 20px; 
+}

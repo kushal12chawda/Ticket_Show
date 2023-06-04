@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking confirm</title>
+    <link rel="stylesheet" type="text/css" href="../static/user4.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <nav class="navbar navbar-dark fixed-top"  style="height: 60px; margin-top: 13px; margin-left: 50px; margin-right: 50px; opacity: .985; background-color: black;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;">
+    <div class="container-fluid">  
+      <a class="navbar-brand" href="#" style="margin-left: 30px; font-family:Copperplate Gothic Light ; font-size: 120%;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b><span style="margin-left: 695px;"><b>Welcome &nbsp&nbsp{{user.user_name}}</b></span><span style="margin-left: 70px;"><b>{{user.user_city}}</b></span><span><a href="/logout" style="color: aliceblue; text-decoration: none; cursor: pointer; margin-left: 30px;"><b>Logout</a></b></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: black;">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="color: white; font-family: Copperplate Gothic Light ;"><span style="font-size: 110%;">🎭</span> <b>Ticket Show</b></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <br>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-family: Goudy Old Style; font-size: 135%; color: black;">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/user11"><b>🍿&nbsp&nbsp&nbsp&nbsp Home</b></a>
+            </li>
+            <br>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/all_movies"><b>🍿&nbsp&nbsp&nbsp&nbsp All Movies</b></a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link" href="/view_booking"><b>🍿&nbsp&nbsp&nbsp&nbsp View Booking</b></a>
+            </li>
+            <br>
+            <li class="nav-item">
+                <a class="nav-link" href="/city_user"><b>🍿&nbsp&nbsp&nbsp&nbsp Change City</b></a>
+            </li>
+            <br>
+            <li class="nav-item">
+              <a class="nav-link" href="/trends"><b>🍿&nbsp&nbsp&nbsp&nbsp Trends</b></a>
+            </li>
+            <br>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" id="searchmovie" name="searchmovie" type="search" placeholder="Search for Movies , Tags and city" aria-label="Search">
+            <button class="btn btn-outline-info" type="submit" formaction="/search_movie" formmethod="POST">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+        <div class="c1">
+          <div class="center"  style="font-family: sans-serif; width: 650px; height: 500px; margin-top: 130px; margin-left: 443px; background-color: black; opacity: 0.875; color: aliceblue; border-radius: 30px; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;">
+            <div class="left" style="padding-top: 30px; margin-left: 70px; font-size: 150%; font-family: Copperplate Gothic Light;">
+                <b>Booking</b>
+                <div class="l1" style="padding-left: 7px; font-size: 75%; font-family: Century Gothic;" >
+                  {{movie_name}} , {{movie_venue}}
+                </div>    
+            </div>
+            <div class="right" style="margin-top: -65px; margin-left: 500px;font-size: 150%; font-family: Copperplate Gothic Light;">
+                <b>Time</b>
+                <div class="r1" style="margin-left: -9px; font-size: 75%; font-family: Century Gothic;">
+                  {{movie_show_time}} 
+                </div>    
+            </div>
+            <div class="body" style="margin-top: 55px;">
+              <div class="content-2" align="center" style="padding-top: 30px; font-size: 150%; font-family: Copperplate Gothic Light; margin-left: -30px;">      
+                Total Seats  &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp  {{total_seats}}
+              </div>
+              <div class="content-2" align="center" style="padding-top: 30px; font-size: 150%; font-family: Copperplate Gothic Light; margin-left: -20px;">      
+                  Ticket Cost  &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp   {{movie_ticket_cost}}
+              </div>
+              <div class="content-2" align="center" style="padding-top: 30px; font-size: 150%; font-family: Copperplate Gothic Light; margin-left: 29px;">      
+                Total&nbsp&nbsp<b>Cost  &nbsp&nbsp&nbsp&nbsp&nbsp :&nbsp&nbsp&nbsp  {{total_cost}} Rs</b>
+              </div>
+              <br>
+              <div class="content-3" style="margin-left: 130px; padding-top: 58px;font-size: large; ">
+              <form><button type="submit"  formaction="/booking33/{{movie_id}}"  formmethod='POST'  class="btn btn-outline-danger my-2 my-sm-0" style="width: 80px; margin-left: 280px;">Back</button></form>
+              </div>
+              <div class="content-3" style="margin-left: 500px; margin-top: -38px;font-size: large;">
+              <form><button type="submit"  formaction="/confirm55/{{movie_id}}/{{total_seats}}"  formmethod='POST'  class="btn btn-outline-warning my-2 my-sm-0" >Proceed</button></form>
+              </div>
+            </div>
+        </div>
+</body> 
+</html>   

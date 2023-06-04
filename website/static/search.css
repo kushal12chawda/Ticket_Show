@@ -1,0 +1,27 @@
+/* hover */
+.search00 {
+    transform:
+      perspective(750px)
+      translate3d(0px, 0px, -250px)
+      rotateX(27deg)
+      scale(0.9, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
+    transition: 0.4s ease-in-out transform;
+}
+
+.search00:hover {
+      transform: translate3d(0px, 0px, -250px);
+    }
+
+    
+    body {
+        background: url("https://www.rocking-mama.com/wp-content/uploads/2017/08/movieee.jpg"); 
+      
+        /* Center and scale the image nicely */
+        background-position: left 0px top 0px; 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: 100% 100%; 
+        background-attachment: fixed; 
+    }   
